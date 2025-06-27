@@ -1,1 +1,635 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bella Pashmina Oxycel - Pashmina Pertama dengan Bahan Oxycell</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f7fe;
+            color: #4a4a4a;
+        }
+        
+        .lavender-bg {
+            background-color: #e2d4f0;
+        }
+        
+        .lavender-text {
+            color: #7e57c2;
+        }
+        
+        .islamic-pattern {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyMjAsIDIxMCwgMjUwLCAwLjEpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+');
+        }
+        
+        .countdown-box {
+            background: linear-gradient(135deg, #9575cd, #7e57c2);
+            box-shadow: 0 4px 15px rgba(126, 87, 194, 0.3);
+        }
+        
+        .price-box {
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            border: 1px solid #d1c4e9;
+        }
+        
+        .testimonial-card {
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 60px;
+            color: #e2d4f0;
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .feature-icon {
+            background-color: #f3e5f5;
+            color: #7e57c2;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .color-variant {
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .color-variant:hover {
+            border-color: #7e57c2;
+            transform: scale(1.05);
+        }
+        
+        .color-variant.active {
+            border-color: #7e57c2;
+            box-shadow: 0 0 0 3px rgba(126, 87, 194, 0.3);
+        }
+        
+        .promo-banner {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .promo-banner::after {
+            content: "PROMO DISKON";
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background-color: #ff5722;
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .promo-banner::after {
+                top: 10px;
+                right: -35px;
+                font-size: 12px;
+                padding: 3px 30px;
+            }
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+        }
+        
+        .whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+        }
+        
+        .whatsapp-text {
+            position: absolute;
+            right: 70px;
+            background-color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            white-space: nowrap;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .whatsapp-button:hover + .whatsapp-text {
+            opacity: 1;
+            right: 80px;
+        }
+    </style>
+</head>
+<body class="islamic-pattern">
+    <!-- Header Section -->
+    <header class="lavender-bg py-4 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold lavender-text flex items-center">
+                    <i class="fas fa-mosque mr-2"></i> Bella Pashmina
+                </div>
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-6">
+                        <li><a href="#features" class="hover:text-purple-800 transition"></a></li>
+                        <li><a href="#details" class="hover:text-purple-800 transition"></a></li>
+                        <li><a href="#testimonials" class="hover:text-purple-800 transition"></a></li>
+                        <li><a href="#order" class="hover:text-purple-800 transition"></a></li>
+                    </ul>
+                </nav>
+                <div class="md:hidden">
+                    <button class="text-purple-700" id="mobile-menu-button">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden mt-4 bg-white rounded-lg shadow-lg p-4" id="mobile-menu">
+                <ul class="space-y-3">
+                    <li><a href="#features" class="block hover:text-purple-800 transition"></a></li>
+                    <li><a href="#details" class="block hover:text-purple-800 transition"></a></li>
+                    <li><a href="#testimonials" class="block hover:text-purple-800 transition"></a></li>
+                    <li><a href="#order" class="block hover:text-purple-800 transition"></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
 
+    <!-- Main Image -->
+    <section class="container mx-auto px-4 py-8">
+        <div class="rounded-lg overflow-hidden shadow-xl transform hover:scale-[1.01] transition duration-500">
+            <img src="https://cdn.orderonline.id/uploads/images_6218301750312351632.jpg" alt="Bella Pashmina Oxycel" class="w-full h-auto">
+        </div>
+    </section>
+
+    <!-- Product Title and Description -->
+    <section class="container mx-auto px-4 py-6">
+        <div class="text-center">
+            <h1 class="text-3xl md:text-4xl font-bold lavender-text mb-4">BELLA PASHMINA OXYCEL</h1>
+            <p class="text-lg md:text-xl text-gray-700 mb-6">PASHMINA PERTAMA DI INDONESIA YANG MENGGUNAKAN BAHAN OXYCELL</p>
+            <div class="w-24 h-1 bg-purple-300 mx-auto mb-8"></div>
+            
+            <div class="max-w-2xl mx-auto">
+                <p class="text-gray-600 mb-6">
+                    Bella Pashmina Oxycel adalah inovasi terbaru dalam dunia hijab modern. Dibuat dengan bahan Oxycell yang berasal dari serat kayu pohon beech, pashmina ini memberikan kenyamanan tak tertandingi dengan kemampuan menyerap keringat yang luar biasa.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <div class="flex items-center text-purple-600">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span>100% Original</span>
+                    </div>
+                    <div class="flex items-center text-purple-600">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span>Garansi 30 Hari</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Features -->
+    <section id="features" class="container mx-auto px-4 py-8 bg-white rounded-xl shadow-md mb-8">
+        <h2 class="text-2xl font-bold lavender-text text-center mb-8">Keunggulan Produk</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="flex items-start p-4 hover:bg-purple-50 rounded-lg transition">
+                <div class="feature-icon">
+                    <i class="fas fa-leaf text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-2">Bahan Oxycell</h3>
+                    <p class="text-gray-600">Terbuat dari serat kayu pohon beech yang ramah lingkungan dan nyaman dipakai. Bahan ini memiliki pori-pori mikro yang membuatnya sangat breathable.</p>
+                </div>
+            </div>
+            
+            <div class="flex items-start p-4 hover:bg-purple-50 rounded-lg transition">
+                <div class="feature-icon">
+                    <i class="fas fa-thumbtack text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-2">Tanpa Jarum Pentul</h3>
+                    <p class="text-gray-600">Desain khusus yang membuat pashmina tetap rapi tanpa perlu jarum pentul. Sistem lipatan inovatif membuatnya tetap pada tempatnya sepanjang hari.</p>
+                </div>
+            </div>
+            
+            <div class="flex items-start p-4 hover:bg-purple-50 rounded-lg transition">
+                <div class="feature-icon">
+                    <i class="fas fa-wind text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-2">Breathable</h3>
+                    <p class="text-gray-600">Sirkulasi udara yang baik membuat nyaman dipakai seharian. Bahan Oxycell mampu menyerap kelembapan 50% lebih baik dari bahan biasa.</p>
+                </div>
+            </div>
+            
+            <div class="flex items-start p-4 hover:bg-purple-50 rounded-lg transition">
+                <div class="feature-icon">
+                    <i class="fas fa-bacteria text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-2">Anti Bakteri</h3>
+                    <p class="text-gray-600">Sifat alami Oxycell menghambat pertumbuhan bakteri penyebab bau, membuat pashmina tetap segar sepanjang hari.</p>
+                </div>
+            </div>
+            
+            <div class="flex items-start p-4 hover:bg-purple-50 rounded-lg transition">
+                <div class="feature-icon">
+                    <i class="fas fa-tshirt text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-2">Easy Care</h3>
+                    <p class="text-gray-600">Tidak mudah kusut dan cepat kering setelah dicuci. Tidak perlu disetrika, cukup diangin-anginkan setelah dicuci.</p>
+                </div>
+            </div>
+            
+            <div class="flex items-start p-4 hover:bg-purple-50 rounded-lg transition">
+                <div class="feature-icon">
+                    <i class="fas fa-palette text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-2">Warna Tahan Lama</h3>
+                    <p class="text-gray-600">Proses pewarnaan khusus membuat warna tidak mudah luntur meski setelah dicuci berkali-kali.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details with Images -->
+    <section id="details" class="container mx-auto px-4 py-8">
+        <h2 class="text-2xl font-bold lavender-text text-center mb-8">Detail Produk</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-4 rounded-lg shadow-md transform hover:-translate-y-1 transition duration-300">
+                <img src="https://cdn.orderonline.id/uploads/images_9013781750312224717.jpg" alt="Detail Pashmina" class="w-full h-auto rounded mb-4">
+                <h3 class="font-bold text-lg lavender-text mb-2">Desain Elegan</h3>
+                <p class="text-gray-700">Motif islami yang timeless dengan kombinasi warna yang sophisticated, cocok untuk berbagai acara formal maupun casual.</p>
+            </div>
+            
+            <div class="bg-white p-4 rounded-lg shadow-md transform hover:-translate-y-1 transition duration-300">
+                <img src="https://cdn.orderonline.id/uploads/images_5939521750312224746.jpg" alt="Detail Pashmina" class="w-full h-auto rounded mb-4">
+                <h3 class="font-bold text-lg lavender-text mb-2">Jahitan Premium</h3>
+                <p class="text-gray-700">Jahitan berkualitas tinggi dengan teknik khusus untuk ketahanan maksimal. Tidak mudah robek meski sering dipakai.</p>
+            </div>
+            
+            <div class="bg-white p-4 rounded-lg shadow-md transform hover:-translate-y-1 transition duration-300">
+                <img src="https://cdn.orderonline.id/uploads/images_5946061750312224730.jpg" alt="Detail Pashmina" class="w-full h-auto rounded mb-4">
+                <h3 class="font-bold text-lg lavender-text mb-2">Material Berkualitas</h3>
+                <p class="text-gray-700">Material lembut yang tidak mudah kusut dengan berat ideal 120gr/m², memberikan drape sempurna saat dipakai.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Color Variants -->
+    <section class="container mx-auto px-4 py-8 bg-white rounded-xl shadow-md mb-8">
+        <h2 class="text-2xl font-bold lavender-text text-center mb-8">Varian Warna</h2>
+        
+        <div class="max-w-2xl mx-auto">
+            <img src="https://cdn.orderonline.id/uploads/images_5609341750312367022.jpg" alt="Varian Warna Bella Pashmina" class="w-full h-auto rounded-lg">
+            <p class="mt-4 text-center text-gray-700">Tersedia dalam 4 pilihan warna elegan: Dusty Pink, Taupe, Mocha, dan Charcoal</p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="container mx-auto px-4 py-8">
+        <h2 class="text-2xl font-bold lavender-text text-center mb-8">Testimoni Pelanggan</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="testimonial-card p-6 transform hover:scale-[1.02] transition duration-300">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-user text-purple-600"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h4 class="font-bold">Sarah Nurhaliza</h4>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-700">"Saya sudah mencoba banyak pashmina, tapi Bella Pashmina Oxycel ini benar-benar berbeda. Bahannya sangat ringan tapi hangat, dan yang paling penting tidak mudah lepas. Sangat worth it untuk harga segini!"</p>
+            </div>
+            
+            <div class="testimonial-card p-6 transform hover:scale-[1.02] transition duration-300">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-user text-purple-600"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h4 class="font-bold">Aisyah Rahma</h4>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-700">"Sebagai ibu muda yang aktif, saya butuh pashmina yang praktis dan stylish. Bella Pashmina ini jawabannya! Tidak perlu repot pakai jarum pentul tapi tetap rapi seharian. Anak-anak saya yang suka menarik-narik pun tidak mudah lepas."</p>
+            </div>
+            
+            <div class="testimonial-card p-6 transform hover:scale-[1.02] transition duration-300">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-user text-purple-600"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h4 class="font-bold">Dewi Lestari</h4>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-700">"Saya alergi dengan bahan sintetis, tapi Bella Pashmina dari Oxycell ini benar-benar nyaman untuk kulit saya. Tidak gatal dan sirkulasi udaranya bagus. Sudah beli 3 warna berbeda karena memang kualitasnya premium."</p>
+            </div>
+            
+            <div class="testimonial-card p-6 transform hover:scale-[1.02] transition duration-300">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-user text-purple-600"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h4 class="font-bold">Fitri Handayani</h4>
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-700">"Pengiriman cepat dan packing rapi. Pashminanya sendiri lebih bagus dari foto, motifnya elegan dan bahannya jatuh sempurna. Sudah dicuci beberapa kali warnanya tidak luntur dan tidak berbulu. Sangat puas!"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Countdown -->
+    <section class="container mx-auto px-4 py-8">
+        <div class="countdown-box text-white rounded-xl p-6 text-center">
+            <h2 class="text-2xl font-bold mb-4">PROMO SPESIAL HARI INI</h2>
+            <p class="mb-6">Diskon spesial akan berakhir dalam:</p>
+            
+            <div class="flex justify-center space-x-4 mb-6">
+                <div class="bg-white text-purple-700 rounded-lg p-3 w-20">
+                    <div class="text-3xl font-bold" id="countdown-hours">12</div>
+                    <div class="text-sm">Jam</div>
+                </div>
+                <div class="bg-white text-purple-700 rounded-lg p-3 w-20">
+                    <div class="text-3xl font-bold" id="countdown-minutes">34</div>
+                    <div class="text-sm">Menit</div>
+                </div>
+                <div class="bg-white text-purple-700 rounded-lg p-3 w-20">
+                    <div class="text-3xl font-bold" id="countdown-seconds">56</div>
+                    <div class="text-sm">Detik</div>
+                </div>
+            </div>
+            
+            <p class="text-lg">Segera dapatkan diskon spesial sebelum waktu habis!</p>
+        </div>
+    </section>
+
+    <!-- Order Notes -->
+    <section class="container mx-auto px-4 py-6 bg-white rounded-xl shadow-md mb-8">
+        <div class="text-center">
+            <h3 class="text-xl font-bold lavender-text mb-4">Catatan Penting</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="flex items-center justify-center p-2 bg-purple-50 rounded-lg">
+                    <i class="fas fa-truck text-purple-600 mr-2"></i>
+                    <span>Pengiriman 2 - 4 Hari Setelah Pemesanan</span>
+                </div>
+                <div class="flex items-center justify-center p-2 bg-purple-50 rounded-lg">
+                    <i class="fas fa-map-marker-alt text-purple-600 mr-2"></i>
+                    <span>Mohon Isi Alamat Dengan Lengkap</span>
+                </div>
+                <div class="flex items-center justify-center p-2 bg-purple-50 rounded-lg">
+                    <i class="fas fa-certificate text-purple-600 mr-2"></i>
+                    <span>100% Product Original</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Section -->
+    <section class="container mx-auto px-4 py-8">
+        <div class="price-box rounded-xl p-6 text-center max-w-2xl mx-auto">
+            <h2 class="text-xl font-bold lavender-text mb-2">PROMO SPESIAL HARI INI</h2>
+            <p class="text-gray-600 mb-4">Dapatkan Diskon Spesial Untuk Hari Ini Saja, Harga Akan Kembali Normal Setelah:</p>
+            
+            <div class="flex justify-center items-center space-x-6 mb-4">
+                <div>
+                    <div class="text-sm text-gray-600">HARGA PROMO</div>
+                    <div class="text-3xl font-bold text-purple-700">Rp127.000</div>
+                </div>
+                <div class="text-purple-500 text-2xl">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div>
+                    <div class="text-sm text-gray-600">HARGA NORMAL</div>
+                    <div class="text-2xl font-bold text-gray-500 line-through">Rp177.000</div>
+                </div>
+            </div>
+            
+            <div class="bg-purple-100 text-purple-800 rounded-lg p-3 inline-block mb-4">
+                <i class="fas fa-coins mr-2"></i> Anda Hemat Rp50.000
+            </div>
+            
+            <div class="text-sm text-gray-500">
+                <i class="fas fa-info-circle mr-1"></i> Stok terbatas, promo hanya untuk 100 pembeli pertama hari ini
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Banner with Image -->
+    <section class="container mx-auto px-4 py-8">
+        <div class="promo-banner rounded-xl overflow-hidden shadow-xl relative">
+            <img src="https://cdn.orderonline.id/uploads/images_6218301750312351632.jpg" alt="Bella Pashmina Promo" class="w-full h-auto">
+        </div>
+    </section>
+
+    <!-- Order Form -->
+    <section id="order" class="container mx-auto px-4 py-8 bg-white rounded-xl shadow-xl mb-12">
+        <h2 class="text-2xl font-bold lavender-text text-center mb-8">Form Pemesanan</h2>
+        
+        <div class="max-w-2xl mx-auto">
+            <!-- OrderOnline Embed Code - v8.0.4 -->
+            <div class="ooef">
+                <form class="orderonline-embed-form" data-username="rara" data-product-slug="bella-pashmina-oxycel" data-product-id="685e2ff5563282c51c01f1d2" id="oo-embed-form-bella-pashmina-oxycel-797" data-origin="orderonline">
+                    <div class="ooef-loader"><style>.ooef-loader{visibility: hidden;opacity: 0;position: absolute;left: 0;right: 0;top: 0;bottom: 0;display: flex;justify-content: center;align-items: center;flex-direction: column;animation: ooLoadingIn 10s ease;-webkit-animation: ooLoadingIn 10s ease;animation-fill-mode: forwards;overflow: hidden}@keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}@-webkit-keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}.ooef-loader>div,.ooef-loader>div:after{border-radius: 50%;width: 2.5rem;height: 2.5rem}.ooef-loader>div{font-size: 10px;position: relative;text-indent: -9999em;border: .25rem solid #f5f5f5;border-left: .25rem solid #55c4cf;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation: ooLoading 1.1s infinite linear;animation: ooLoading 1.1s infinite linear}.ooef-loader.error>div{border-left: .25rem solid #ff4500;animation-duration: 5s}@-webkit-keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}@keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}</style><div aria-live="polite" role="status"><div>Loading...</div></div></div>
+                </form>
+            </div>
+            <script>
+                if (typeof xLogError != 'function') {
+                    var xLogError = function (error) {
+                        var req = new XMLHttpRequest();
+                        var payload = JSON.stringify({
+                            url: document.location.href,
+                            line: error.line,
+                            stack: error.stack
+                        });
+                        var params = 'message=' + encodeURIComponent(error.name) + '&payload=' + encodeURIComponent(payload) + '&type=embed&level=error';
+                        req.open('POST', 'https://api.orderonline.id/log', true);
+                        req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                        req.send(params);
+                    };
+                }
+                try {
+                    if (typeof xEmbedScript != 'function') {
+                        var xEmbedScript = function () {
+                            !function(w, d, e, v, id, t, s) {
+                                if (d.getElementById(id)) return;
+                                t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                                s = d.getElementsByTagName(e)[0];
+                                s.parentNode.insertBefore(t, s);
+                            }(window, document, 'script', 'https://cdn.orderonline.id/js/embed-v2-slim.min.js?v=8.0.4', 'oo-embed-js');
+                        };
+                    }
+                    if (typeof xEmbedInit != 'function') {
+                        var xEmbedInit = function (w, n) {
+                            if (w.ooe) return;
+                            n = w.ooe = function() {
+                                n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                            };
+                            if (!w._ooe) w._ooe = n;
+                            n.push = n;n.loaded = !0;n.version = '8.0.4';n.queue = [];
+                        };
+                    }
+                    xEmbedInit(window);
+                    ooe('setup', 'redirect', 'https://rara.orderonline.id');
+                    ooe('init', '5f12ee789d8e8e5e870172ee', '685e2ff5563282c51c01f1d2', null, 'oo-embed-form-bella-pashmina-oxycel-797', {"mode":"page","action":"Klik untuk pemesanan","title":"Form Pemesanan","triggerPixel":false,"triggerGtm":false});
+                    if (!window.jQuery) {
+                        !function(w, d, e, v, id, t, s) {
+                            if (d.getElementById(id)) return;
+                            t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                            t.addEventListener('load', xEmbedScript);
+                            s = d.getElementsByTagName(e)[0];
+                            s.parentNode.insertBefore(t, s);
+                        }(window, document, 'script', 'https://cdn.orderonline.id/js/vendor/jquery.min.js', 'oo-embed-jquery');
+                    } else {
+                        xEmbedScript();
+                    }
+                } catch (e) {
+                    xLogError(e);
+                    throw e;
+                }
+            </script>
+            <!-- End OrderOnline Embed Code -->
+            
+            <div class="text-center text-sm text-gray-500">
+                <p><i class="fas fa-lock mr-2"></i> Data Anda aman dan tidak akan disalahgunakan</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="lavender-bg py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <div class="text-2xl font-bold lavender-text mb-4">
+                    <i class="fas fa-mosque mr-2"></i> Bella Pashmina
+                </div>
+                <p class="text-gray-700 mb-4">Pashmina Pertama di Indonesia dengan Bahan Oxycell</p>
+                
+                <p class="text-sm text-gray-600">&copy; 2025 Bella Pashmina. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const midnight = new Date();
+            midnight.setHours(24, 0, 0, 0);
+            
+            const diff = midnight - now;
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown-hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('countdown-minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('countdown-seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Color Variant Selection
+        const colorVariants = document.querySelectorAll('.color-variant');
+        colorVariants.forEach(variant => {
+            variant.addEventListener('click', () => {
+                colorVariants.forEach(v => v.classList.remove('active'));
+                variant.classList.add('active');
+            });
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
